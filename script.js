@@ -27,8 +27,8 @@ function showTaskList() {
 
     tasks.forEach(function(task, index) {
         var taskItem = '<div class="task">';
-        taskItem += task.task + '<span class="due-date">' + (task.dueDate ? " - Due: " + task.dueDate : "") + '</span>';
-        taskItem += '<button onclick="deleteTask(' + index + ')">Delete</button>';
+        taskItem += task.task + '<span class="due-date">' + (task.dueDate ? " Due: " + task.dueDate : "") + '</span>';
+        taskItem += '<button onclick="deleteTask(' + index + ')" class="deleteButton" >Delete</button>';
         taskItem += '</div>';
         taskListItem += taskItem;
     });

@@ -1,17 +1,48 @@
 body {
     font-family: Arial, sans-serif;
+    background-color: rgb(224, 241, 255);
+    width: 50%;
+    margin: auto;
 }
+
+h1 {
+   padding: 1rem; 
+}
+
 .task {
     margin-bottom: 5px;
     padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    background-color: white;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 2rem;
+    border: none;
+    padding: 1rem;
+    margin: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
+
+.add {
+    border: none;
+    background-color: rgb(159, 210, 255);
+    padding: 1rem;
+    border-radius: 2rem;
+    margin: 1rem;
+}
+
 .completed {
-    text-decoration: line-through;
-    color: #999;
+    background-color: rgb(117, 155, 117);
 }
 .due-date {
     font-size: 12px;
     color: #888;
+}
+
+.deleteButton {
+    border: none;
+    background-color: rgb(225, 101, 126);
+    margin-left: 2rem;
+    padding: 0.5rem;
+    border-radius: 1rem;
 }
