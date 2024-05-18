@@ -1,3 +1,5 @@
+//task list code
+
 var tasks = [];
 function addTask() {
     var input = document.getElementById("taskInput");
@@ -61,6 +63,61 @@ showTaskList();
 let progress = document.getElementById("progress");
 let song = document.getElementById("song");
 let ctrlIcon = document.getElementById("ctrlIcon");
+
+//supplies list code
+
+let tags = [];
+let supplies = [];
+
+function createTag() {
+    const tagInput = document.getElementById('newTagInput');
+    const tagName = tagInput.value.trim();
+    if (tagName && !tags.includes(tagName)) {
+        tags.push(tagName);
+        tagInput.value = '';
+        showTags();
+    }
+}
+
+function showTags() {
+    const tagsDiv = document.getElementById('tags');
+    tagsDiv.innerHTML = '<h3>Events</h3>';
+    tagsDiv.innerHTML += tags.map(tag => `<span class="tag">${tag}</span>`).join('');
+}
+
+function addSupply() {
+    const supplyInput = document.getElementById('newSupplyInput');
+    const supplyName = supplyInput.value.trim();
+    if (supplyName) {
+        supplies.push({ name: supplyName, tags: [] });
+        supplyInput.value = '';
+        showSupplies();
+    }
+}
+
+function showSupplies() {
+    const suppliesDiv = document.getElementById('supplies');
+    suppliesDiv.innerHTML = '<h3>Supplies List</h3>';
+    suppliesDiv.innerHTML += supplies.map((supply, index) => {
+        let supplyHTML = `<div class="supply-item">${supply.name}`;
+        if (supply.tags.length) {
+            supplyHTML += `<div>Tags: ${supply.tags.join(', ')}</div>`;
+        }
+        supplyHTML += `<select class="options" onchange="attachEvent(${index}, this.value)">
+            <option value="">Attach Event</option>
+            ${tags.map(tag => `<option value="${tag}">${tag}</option>`).join('')}
+        </select></div>`;
+        return supplyHTML;
+    }).join('');
+}
+
+function attachTag(supplyIndex, tag) {
+    if (tag && !supplies[supplyIndex].tags.includes(tag)) {
+        supplies[supplyIndex].tags.push(tag);
+        showSupplies();
+    }
+}
+//song player code
 
 song.onloadmetadata = function(){
     progress.max = song.duration;

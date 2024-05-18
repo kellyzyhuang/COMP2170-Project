@@ -9,6 +9,30 @@
 </head>
 <body>
 
+<div class="suppliesList">
+    <h1>Events and Supplies</h1>
+
+    <div class="createSection">
+        <h3 class="suppliesHeaders">Create Event</h3>
+        <input type="text" id="newTagInput" placeholder="Enter tag name">
+        <button onclick="createTag()" class="createNewTag">Create Tag</button>
+    </div>
+
+    <div id="tags">
+        <h3 class="suppliesHeaders">Events</h3>
+    </div>
+
+    <div class="createSection">
+        <h3 class="suppliesHeaders">Add Supply</h3>
+        <input type="text" id="newSupplyInput" placeholder="Enter supply name">
+        <button onclick="addSupply()" class="addNewSupply">Add Supply</button>
+    </div>
+
+    <div id="supplies">
+        <h3 class="suppliesHeaders">Supplies List</h3>
+    </div>
+</div>
+
 <div class="todo-list">
     <h1>TO-DO LIST</h1>
     <input type="text" id="taskInput" placeholder="Add new task" class="task">
