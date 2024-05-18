@@ -6,13 +6,45 @@ body {
 
 }
 
+.suppliesList, .todo-list {
+    background-color: #ffe0e5;
+    padding: 1rem;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    margin: 1rem;
+}
+
+#tags, #supplies {
+    margin-top: 20px;
+}
+.tag {
+    display: inline-block;
+    background-color:  rgb(225, 101, 126);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    margin: 2px;
+    cursor: pointer;
+}
+.tag.selected {
+    background-color: #87cefa;
+}
+
 h1 {
    padding: 1rem; 
 }
 
-.task {
+.suppliesHeaders {
+    margin: 1rem;
+}
+
+.createSection {
+    background-color: rgb(224, 241, 255);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    padding: 1rem 0;
+    margin: 1rem 0;
+}
+
+.task, #newTagInput, #newSupplyInput, .supply-item {
     margin-bottom: 5px;
-    padding: 8px;
     background-color: white;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
     border-radius: 2rem;
@@ -24,7 +56,18 @@ h1 {
     align-items: center;
 }
 
-.add {
+.options {
+    background-color: rgb(225, 101, 126);
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 2rem;
+    padding: 0.5rem;
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.add, .addNewSupply, .createNewTag {
     border: none;
     background-color: rgb(159, 210, 255);
     padding: 1rem;
