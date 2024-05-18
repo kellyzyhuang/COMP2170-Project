@@ -81,7 +81,7 @@ function createTag() {
 
 function showTags() {
     const tagsDiv = document.getElementById('tags');
-    tagsDiv.innerHTML = '<h3>Events</h3>';
+    tagsDiv.innerHTML = '';
     tagsDiv.innerHTML += tags.map(tag => `<span class="tag">${tag}</span>`).join('');
 }
 
@@ -97,7 +97,7 @@ function addSupply() {
 
 function showSupplies() {
     const suppliesDiv = document.getElementById('supplies');
-    suppliesDiv.innerHTML = '<h3>Supplies List</h3>';
+    suppliesDiv.innerHTML = '';
     suppliesDiv.innerHTML += supplies.map((supply, index) => {
         let supplyHTML = `<div class="supply-item">${supply.name}`;
         if (supply.tags.length) {

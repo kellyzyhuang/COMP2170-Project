@@ -24,9 +24,6 @@ body {
     margin: 2px;
     cursor: pointer;
 }
-.tag.selected {
-    background-color: #87cefa;
-}
 
 h1 {
    padding: 1rem; 
@@ -36,11 +33,9 @@ h1 {
     margin: 1rem;
 }
 
-.createSection {
-    background-color: rgb(224, 241, 255);
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-    padding: 1rem 0;
-    margin: 1rem 0;
+hr {
+    border: none;
+    border-top: solid 1px rgb(225, 101, 126);
 }
 
 .task, #newTagInput, #newSupplyInput, .supply-item {
@@ -73,6 +68,7 @@ h1 {
     padding: 1rem;
     border-radius: 2rem;
     margin: 1rem;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .completed {
