@@ -186,3 +186,47 @@ nav .circle{
     background-color:#F88379;
     color: #fff;
 }
+
+header {
+    background-color: rgb(159, 210, 255);
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    padding-right: 3rem; 
+    padding-top: 1rem; 
+}
+
+header nav ul li {
+    padding: 0 15px;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+header nav ul li a:hover {
+    text-decoration: underline; 
+}
+
+footer {
+    background-color: rgb(159, 210, 255);
+    color: black;
+    text-align: center;
+    padding: 1rem;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+footer p {
+    margin: 0;
+}
