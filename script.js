@@ -1,20 +1,29 @@
 //task list code
-
 var tasks = [];
+
 function addTask() {
     var input = document.getElementById("taskInput");
     var dueDateInput = document.getElementById("dueDateInput");
-    var task = input.value;
+    var task = input.value.trim();
     var dueDate = dueDateInput.value;
-    
-    if (task !== "") {
-        tasks.push({ task: task, dueDate: dueDate });
-        showTaskList();
-        input.value = "";
-        dueDateInput.value = "";
-    } else {
+
+    if (task === "") {
         alert("Please enter a task!");
+        return;
     }
+    if (dueDate === "") {
+        alert("Please enter a due date!");
+        return;
+    }
+    if (new Date(dueDate) < new Date()) {
+        alert("The due date must be in the future!");
+        return;
+    }
+
+    tasks.push({ task: task, dueDate: dueDate });
+    showTaskList();
+    input.value = "";
+    dueDateInput.value = "";
 }
 
 function showTaskList() {
@@ -30,13 +39,12 @@ function showTaskList() {
     tasks.forEach(function(task, index) {
         var taskItem = '<div class="task">';
         taskItem += task.task + '<span class="due-date">' + (task.dueDate ? " Due: " + task.dueDate : "") + '</span>';
-        taskItem += '<button onclick="deleteTask(' + index + ')" class="deleteButton" >Delete</button>';
+        taskItem += '<button onclick="deleteTask(' + index + ')" class="deleteButton">Delete</button>';
         taskItem += '</div>';
         taskListItem += taskItem;
     });
 
     taskListDiv.innerHTML = taskListItem;
-
 }
 
 function deleteTask(index) {
@@ -45,11 +53,11 @@ function deleteTask(index) {
 }
 
 function completion(taskDiv) {
-if (taskDiv.classList.contains("completed")) {
-    taskDiv.classList.remove("completed");
-} else {
-    taskDiv.classList.add("completed");
-}
+    if (taskDiv.classList.contains("completed")) {
+        taskDiv.classList.remove("completed");
+    } else {
+        taskDiv.classList.add("completed");
+    }
 }
 
 document.getElementById("taskList").addEventListener("click", function(event) {
@@ -65,49 +73,58 @@ let song = document.getElementById("song");
 let ctrlIcon = document.getElementById("ctrlIcon");
 
 //supplies list code
-
 let tags = [];
 let supplies = [];
 
 function createTag() {
     const tagInput = document.getElementById('newTagInput');
     const tagName = tagInput.value.trim();
-    if (tagName && !tags.includes(tagName)) {
-        tags.push(tagName);
-        tagInput.value = '';
-        showTags();
-    } else {
-        alert("Please enter an event!");
+
+    if (tagName === "") {
+        alert("Please enter an event name!");
+        return;
     }
+    if (tags.includes(tagName)) {
+        alert("This event name already exists!");
+        return;
+    }
+
+    tags.push(tagName);
+    tagInput.value = '';
+    showTags();
 }
 
 function showTags() {
     const tagsDiv = document.getElementById('tags');
-    tagsDiv.innerHTML = '';
-    tagsDiv.innerHTML += tags.map(tag => `<span class="tag">${tag}</span>`).join('');
+    tagsDiv.innerHTML = tags.map(tag => `<span class="tag">${tag}</span>`).join('');
 }
 
 function addSupply() {
     const supplyInput = document.getElementById('newSupplyInput');
     const supplyName = supplyInput.value.trim();
-    if (supplyName) {
-        supplies.push({ name: supplyName, tags: [] });
-        supplyInput.value = '';
-        showSupplies();
-    } else {
-        alert("Please enter a supply!");
+
+    if (supplyName === "") {
+        alert("Please enter a supply name!");
+        return;
     }
+    if (supplies.some(supply => supply.name === supplyName)) {
+        alert("This supply already exists!");
+        return;
+    }
+
+    supplies.push({ name: supplyName, tags: [] });
+    supplyInput.value = '';
+    showSupplies();
 }
 
 function showSupplies() {
-    const suppliesDiv = document.getElementById('supplies');
-    suppliesDiv.innerHTML = '';
-    suppliesDiv.innerHTML += supplies.map((supply, index) => {
+    const suppliesDiv = document.getElementById('suppliesList');
+    suppliesDiv.innerHTML = supplies.map((supply, index) => {
         let supplyHTML = `<div class="supply-item">${supply.name}`;
         if (supply.tags.length) {
             supplyHTML += `<div>Tags: ${supply.tags.join(', ')}</div>`;
         }
-        supplyHTML += `<select class="options" onchange="attachEvent(${index}, this.value)">
+        supplyHTML += `<select class="options" onchange="attachTag(${index}, this.value)">
             <option value="">Attach Event</option>
             ${tags.map(tag => `<option value="${tag}">${tag}</option>`).join('')}
         </select></div>`;
@@ -116,11 +133,16 @@ function showSupplies() {
 }
 
 function attachTag(supplyIndex, tag) {
-    if (tag && !supplies[supplyIndex].tags.includes(tag)) {
+    if (tag === "") {
+        alert("Please select a valid event to attach!");
+        return;
+    }
+    if (!supplies[supplyIndex].tags.includes(tag)) {
         supplies[supplyIndex].tags.push(tag);
         showSupplies();
     }
 }
+
 //song player code
 
 song.onloadmetadata = function(){
