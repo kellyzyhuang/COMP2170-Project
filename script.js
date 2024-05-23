@@ -76,6 +76,8 @@ function createTag() {
         tags.push(tagName);
         tagInput.value = '';
         showTags();
+    } else {
+        alert("Please enter an event!");
     }
 }
 
@@ -92,6 +94,8 @@ function addSupply() {
         supplies.push({ name: supplyName, tags: [] });
         supplyInput.value = '';
         showSupplies();
+    } else {
+        alert("Please enter a supply!");
     }
 }
 
@@ -148,4 +152,3 @@ progress.onchange = function(){
     ctrlIcon.classList.add("fa-pause");
     ctrlIcon.classList.remove("fa-play");
 }
-
