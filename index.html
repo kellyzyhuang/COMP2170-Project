@@ -12,6 +12,7 @@
         <ul>
             <li><a href="#todo">To-Do</a></li>
             <li><a href="#supplies">Supplies</a></li>
+            <li><a href="#budgeter">Budgeter</a></li>
             <li><a href="#music">Music</a></li>
         </ul>
     </nav>
@@ -46,6 +47,27 @@
     <button onclick="addTask()" class="add">Add</button>
     <hr>
     <div id="taskList"></div>
+</div>
+
+<div class="budgeter" id="budgeter">
+    <h1>Budgeter</h1>
+    <div>
+        <input type="number" id="budgetInput" placeholder="Enter budget amount">
+        <button class="setBudget" onclick="setBudget()">Set Budget</button>
+    </div>
+    <hr>
+    <div>
+        <input type="text" id="expenseNameInput" placeholder="Enter expense name">
+        <input type="number" id="expenseAmountInput" placeholder="Enter expense amount">
+        <button class="addExpense" onclick="addExpense()">Add Expense</button>
+    </div>
+    <hr>
+    <div id="budgetSummary">
+        <p>Budget: $<span id="budgetAmount">0</span></p>
+        <p>Expenses: $<span id="totalExpenses">0</span></p>
+        <p>Remaining: $<span id="remainingBudget">0</span></p>
+    </div>
+    <div id="expensesList"></div>
 </div>
 
 <div class="container">

@@ -143,6 +143,46 @@ function attachTag(supplyIndex, tag) {
     }
 }
 
+// budgeter code
+let budget = 0;
+let totalExpenses = 0;
+let expenses = [];
+
+function setBudget() {
+    const budgetInput = document.getElementById('budgetInput');
+    budget = parseFloat(budgetInput.value);
+    budgetInput.value = '';
+    updateBudgetSummary();
+}
+
+function addExpense() {
+    const expenseNameInput = document.getElementById('expenseNameInput');
+    const expenseAmountInput = document.getElementById('expenseAmountInput');
+    const expenseName = expenseNameInput.value.trim();
+    const expenseAmount = parseFloat(expenseAmountInput.value);
+
+    if (expenseName === "" || isNaN(expenseAmount)) {
+        alert("Please enter a valid expense name and amount!");
+        return;
+    }
+
+    expenses.push({ name: expenseName, amount: expenseAmount });
+    totalExpenses += expenseAmount;
+    expenseNameInput.value = '';
+    expenseAmountInput.value = '';
+    updateBudgetSummary();
+}
+
+function updateBudgetSummary() {
+    const remainingBudget = budget - totalExpenses;
+    document.getElementById('budgetAmount').textContent = budget.toFixed(2);
+    document.getElementById('totalExpenses').textContent = totalExpenses.toFixed(2);
+    document.getElementById('remainingBudget').textContent = remainingBudget.toFixed(2);
+
+    const expensesListDiv = document.getElementById('expensesList');
+    expensesListDiv.innerHTML = expenses.map(expense => `<div>${expense.name}: $${expense.amount.toFixed(2)}</div>`).join('');
+}
+
 //song player code
 
 song.onloadmetadata = function(){
