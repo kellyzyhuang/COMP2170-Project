@@ -150,7 +150,6 @@ let expenses = [];
 
 function setBudget() {
     const budgetInput = document.getElementById('budgetInput');
-    budget = parseFloat(budgetInput.value);
     budgetInput.value = '';
     updateBudgetSummary();
 }
@@ -158,8 +157,8 @@ function setBudget() {
 function addExpense() {
     const expenseNameInput = document.getElementById('expenseNameInput');
     const expenseAmountInput = document.getElementById('expenseAmountInput');
-    const expenseName = expenseNameInput.value.trim();
-    const expenseAmount = parseFloat(expenseAmountInput.value);
+    const expenseName = expenseNameInput.value;
+    const expenseAmount = expenseAmountInput.value;
 
     if (expenseName === "" || isNaN(expenseAmount)) {
         alert("Please enter a valid expense name and amount!");
@@ -179,8 +178,8 @@ function updateBudgetSummary() {
     document.getElementById('totalExpenses').textContent = totalExpenses.toFixed(2);
     document.getElementById('remainingBudget').textContent = remainingBudget.toFixed(2);
 
-    const expensesListDiv = document.getElementById('expensesList');
-    expensesListDiv.innerHTML = expenses.map(expense => `<div>${expense.name}: $${expense.amount.toFixed(2)}</div>`).join('');
+    const expensesList = document.getElementById('expensesList');
+    expensesList.innerHTML = expenses.map(expense => `<div>${expense.name}: $${expense.amount.toFixed(2)}</div>`).join('');
 }
 
 //song player code
